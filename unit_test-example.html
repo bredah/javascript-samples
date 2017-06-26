@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jasmine Example</title>
+	<!-- GUI imports -->
+	<link rel="shortcut icon" type="image/png" href="lib/jasmine-2.6.4/jasmine_favicon.png">
+	<link rel="stylesheet" type="text/css" href="lib/jasmine-2.6.4/jasmine.css">
+	<!-- Embedded Library imports -->
+	<script type="text/javascript" src="lib/jasmine-2.6.4/jasmine.js"></script>
+	<script type="text/javascript" src="lib/jasmine-2.6.4/jasmine-html.js"></script>
+	<script type="text/javascript" src="lib/jasmine-2.6.4/boot.js"></script>
+	<!-- -->
+	<script type="text/javascript">
+
+		var Calculator = class {
+
+			/**
+			* Get valuaA value 
+			*
+			* @return {Number} Value stored
+			*/
+			get valueA(){
+				return this._valueA;
+			}
+
+			/**
+			* Set valuaA value 
+			*
+			* @param {Number} value - value to be stored
+			*/
+			set valueA(value){
+				this._valueA = value;
+			}
+
+			/**
+			* Get valuaB value 
+			*
+			* @return {Number} Value stored
+			*/
+			get valueB(){
+				return this._valueB;
+			}
+
+			/**
+			* Set valuaB value 
+			*
+			* @param {Number} value - value to be stored
+			*/
+			set valueB(value){
+				this._valueB = value;
+			}
+
+			/**
+			* Calculate two values (valueA & valueB)
+			*
+			* @params {String} eq - Equation to be used
+			* @return {Number} Result of the equation
+			*/
+			equation(eq){				
+				switch(eq.toUpperCase()){
+					case "ADD":
+						return this._valueA + this._valueB;
+					case "SUBTRACTION":
+						return this._valueA - this._valueB;
+					case "MULTIPLY":
+						return this._valueA * this._valueB;
+					case "DIVIDE":
+						return this._valueA / this._valueB;				
+				}
+			}
+		}
+
+		// Test Suite
+		describe('Calculator suite', function(){
+			
+			var calculator = new Calculator();
+
+			it('should add two numbers', function(){
+				
+				calculator.valueA = 4;
+				calculator.valueB = 2;
+				
+				expect(calculator.equation("add")).toBe(calculator.valueA + calculator.valueB);
+			});
+
+
+			it('subtraction add two numbers', function(){
+				
+				calculator.valueA = 4;
+				calculator.valueB = 2;
+				
+				expect(calculator.equation("subtraction")).toBe(calculator.valueA - calculator.valueB);
+			});
+
+			it('multiply add two numbers', function(){
+				
+				calculator.valueA = 4;
+				calculator.valueB = 2;
+				
+				expect(calculator.equation("multiply")).toBe(calculator.valueA * calculator.valueB);
+			});
+
+			it('divide add two numbers', function(){
+				
+				calculator.valueA = 4;
+				calculator.valueB = 2;
+				
+				expect(calculator.equation("divide")).toBe(calculator.valueA / calculator.valueB);
+			});
+
+		});
+
+	</script>
+</head>
+<body>
+</body>
+</html>
